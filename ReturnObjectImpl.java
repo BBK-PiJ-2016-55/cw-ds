@@ -14,11 +14,8 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 
 	public boolean hasError(){
-		boolean error = true;
-		if (this.errorMessage == ErrorMessage.NO_ERROR){
-			error = false;
-		}
-			return error;
+		boolean error = (this.errorMessage == ErrorMessage.NO_ERROR)? false : true;
+		return error;
 	}
 
 	public ErrorMessage getError(){
