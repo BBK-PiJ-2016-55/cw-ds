@@ -22,7 +22,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 
 	public ErrorMessage getError(){
-		if (object == null) {
+		if (this.hasError()) {
 		return errorMessage;
 	} else {
 		return ErrorMessage.NO_ERROR;
