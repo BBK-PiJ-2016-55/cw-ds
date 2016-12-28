@@ -13,10 +13,13 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.object = object;
 	}
 
-
+    
 	public boolean hasError(){
-		boolean error = false;
-		return error;
+		boolean error = true;
+		if (this.errorMessage == ErrorMessage.NO_ERROR){
+			error = false;
+		}
+			return error;
 	}
 
 	public ErrorMessage getError(){
