@@ -1,21 +1,5 @@
 /**
- * A list is a collection of objects that are sorted and can be
- * accessed by index. The first element in the list is at index 0.
- *
- * A list can store objects of any kind, and they can be of different
- * types: Integers, Doubles, String, or even other lists. However,
- * this list cannot store null objects.
- * 
- * There is no limit to the number of elements in the list (provided
- * that there is free memory in the Java Virtual Machine).
- * 
- * Not all operations on a list will always be successful. For
- * example, a programmer may try to remove an element from an empty
- * list, or from a position where there is nothing. Since we hace not
- * covered exceptions yet, we need another mechanism to report
- * errors. In order to do that, methods of this list will return a
- * {@see ReturnObject} that will contain either an object or an error
- * value of the right kind (as defined in {@see ErrorMessage}). 
+ * An implementation of {@see List} using an Object array.
  * 
  * @author svince04
  */
