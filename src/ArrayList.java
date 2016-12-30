@@ -42,21 +42,19 @@ public class ArrayList implements List {
 		} else if (index < 0 || index > size) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {	
-
 			if (size == DEFAULT_SIZE){
 				embiggen();
 			}
 			if (size == index){
 				array[size] = item;
-				size++;
 			} else {
-				for (int i = (size - 1); i != index; i--) {
+				for (int i = (size - 1); i >= index; i--) {
 					array[(i + 1)] = array[i];
 				}
 				array[index] = item;
-				size++;
 			}
 			retObject = new ReturnObjectImpl(item);
+			size++;
 		}
 		return retObject;
 	}
