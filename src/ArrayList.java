@@ -22,14 +22,18 @@ public class ArrayList implements List {
 			retObject = new ReturnObjectImpl(array[index]);
 		}
 	return retObject;
-	
 	}
 
 	public ReturnObject remove(int index) {
 		retObject = get(index);
-
-		//ReturnObject firstObject = null;
-		return retObject;
+		if (!retObject.hasError()) {
+			for (int i = index; array[(i + 1)] != null; i++) {
+				array[i] = array[(i + 1)];
+			}
+			array[size] = null;
+			size--;
+		}
+		return retObject; 
 	}
 
 	public ReturnObject add(int index, Object item) {
@@ -38,15 +42,21 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(Object item) {
-		if (size >= DEFAULT_SIZE) {
-			embiggen();
+		if (item == null) {
+			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+			if (size == DEFAULT_SIZE) {
+				embiggen();
+			}
+			array[size] = item;
+			size++;
+			retObject = new ReturnObjectImpl(item);
 		}
-		array[size] = item;
-		size++;
-		retObject = new ReturnObjectImpl(item);
 		return retObject;
 	}
 
+	// Makes array bigger if it has reached maximum capacity
+	// Change this name to something more sensible pre-submission 
 	public void embiggen() {
 		Object[] tempArray = new Object[DEFAULT_SIZE + 10];
 			for (int i = 0; i < DEFAULT_SIZE; i++) {
