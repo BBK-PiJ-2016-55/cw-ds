@@ -39,7 +39,10 @@ public class ArrayList implements List {
 	public ReturnObject add(int index, Object item) {
 		if (item == null) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
-		} else {
+		} else if (index < 0 || index > size) {
+			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {	
+
 			if (size == DEFAULT_SIZE){
 				embiggen();
 			}
