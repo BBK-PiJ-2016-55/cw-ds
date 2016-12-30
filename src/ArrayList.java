@@ -1,7 +1,7 @@
 public class ArrayList implements List {
 	
 	private int size = 0;
-	private static int DEFAULT_SIZE = 20; 
+	private static int DEFAULT_SIZE = 5; 
 	private Object[] array = new Object[DEFAULT_SIZE];
 	private ReturnObject retObject;
 
@@ -39,17 +39,22 @@ public class ArrayList implements List {
 
 	public ReturnObject add(Object item) {
 		if (size >= DEFAULT_SIZE) {
-			// create new array bigger than before, up default size, copy old array into new array and point MyArray at new one
-			Object[] tempArray = new Object[DEFAULT_SIZE + 10];
+			embiggen();
+		}
+		array[size] = item;
+		size++;
+		retObject = new ReturnObjectImpl(item);
+		return retObject;
+	}
+
+	public void embiggen() {
+		Object[] tempArray = new Object[DEFAULT_SIZE + 10];
 			for (int i = 0; i < DEFAULT_SIZE; i++) {
 				tempArray[i] = array[i];
 			}
-			DEFAULT_SIZE = DEFAULT_SIZE + 10;
-			array = tempArray;
-		}
-		array[size + 1] = item;
-		retObject = new ReturnObjectImpl(item);
-		return retObject;
+		DEFAULT_SIZE += 10;
+		array = tempArray;
+
 	}
 
 } 
