@@ -1,7 +1,7 @@
 public class ArrayList implements List {
 	
 	private int size = 0;
-	private static int DEFAULT_SIZE = 5; 
+	private static int DEFAULT_SIZE = 20; 
 	private Object[] array = new Object[DEFAULT_SIZE];
 	private ReturnObject retObject;
 
@@ -37,21 +37,29 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(int index, Object item) {
-		ReturnObject firstObject = null;
-		return firstObject;
-	}
-
-	public ReturnObject add(Object item) {
 		if (item == null) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
-			if (size == DEFAULT_SIZE) {
+			if (size == DEFAULT_SIZE){
 				embiggen();
 			}
-			array[size] = item;
-			size++;
+			if (size == index){
+				array[size] = item;
+				size++;
+			} else {
+				for (int i = (size - 1); i != index; i--) {
+					array[(i + 1)] = array[i];
+				}
+				array[index] = item;
+				size++;
+			}
 			retObject = new ReturnObjectImpl(item);
 		}
+		return retObject;
+	}
+
+	public ReturnObject add(Object item) {
+		retObject = add(size, item);
 		return retObject;
 	}
 
@@ -64,7 +72,6 @@ public class ArrayList implements List {
 			}
 		DEFAULT_SIZE += 10;
 		array = tempArray;
-
 	}
 
 } 
