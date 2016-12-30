@@ -80,8 +80,8 @@ public class ArrayList implements List {
 	public ReturnObject remove(int index) {
 		retObject = get(index);
 		if (!retObject.hasError()) {
-			for (int i = index; array[(i + 1)] != null; i++) {
-				array[i] = array[(i + 1)];
+			for (int i = index; i < size; i++) {
+				array[i] = array[i + 1];
 			}
 			array[size] = null;
 			size--;
@@ -113,14 +113,14 @@ public class ArrayList implements List {
 		} else if (index < 0 || index > size) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {	
-			if (size == DEFAULT_SIZE){
+			if (size >= array.length){
 				embiggen();
 			}
 			if (size == index){
 				array[size] = item;
 			} else {
 				for (int i = (size - 1); i >= index; i--) {
-					array[(i + 1)] = array[i];
+					array[i + 1] = array[i];
 				}
 				array[index] = item;
 			}
@@ -150,16 +150,13 @@ public class ArrayList implements List {
 	 * Creates a bigger (+10) array if current capacity has 
 	 * been reached, copies in existing values and switches old
 	 * pointer to new, bigger array.
-	 *  
-	 * Increases DEFAULT_SIZE to match.
 	 *
 	 */ 
 	public void embiggen() {
-		Object[] tempArray = new Object[DEFAULT_SIZE + 10];
-			for (int i = 0; i < DEFAULT_SIZE; i++) {
+		Object[] tempArray = new Object[array.length + 10];
+			for (int i = 0; i < array.length; i++) {
 				tempArray[i] = array[i];
 			}
-		DEFAULT_SIZE += 10;
 		array = tempArray;
 	}
 
