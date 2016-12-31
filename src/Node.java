@@ -3,7 +3,7 @@ public class Node {
 	private Object value;
 
 	public Node(Object value, Node nextNode){
-		this.nextNode = nextNode;
+		this.nextNode = null;
 		this.value = value; 
 	}
 
@@ -23,8 +23,4 @@ public class Node {
 	public Object getNodeValue(){
 		return value; 
 	}
-
-
-
-
 }
