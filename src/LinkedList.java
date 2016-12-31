@@ -37,7 +37,18 @@ public class LinkedList implements List {
 	}
 
 	public ReturnObject remove(int index){
-		ReturnObject retObject = null;
+		retObject = get(index);
+		if (!retObject.hasError()) {
+		Node tempNode = firstNode;
+		// go through nodes until we reach the one before the one to be removed
+		// set that nextNode to point to the one *after* node for deletion
+		// decrease size
+		for (int i = 0; i < (index - 1); i++) {
+			tempNode = tempNode.getNextNode();
+			}
+			tempNode.setNextNode(tempNode.getNextNode().getNextNode());
+			size--;
+		}
 		return retObject;
 	}
 
