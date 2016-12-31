@@ -24,7 +24,7 @@ public class LinkedList implements List {
 		// return that node
 		if (isEmpty()){
 			retObject = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
-		} else if (index < 0 || index > size) {
+		} else if (index < 0 || index >= size) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 		Node tempNode = firstNode;
@@ -50,12 +50,12 @@ public class LinkedList implements List {
 				for (int i = 0; i < (index - 1); i++) {
 					tempNode = tempNode.getNextNode();
 					}
-					if (tempNode.getNextNode().getNextNode() == null){
+				if (tempNode.getNextNode().getNextNode() == null){
 						tempNode.setNextNode(null);
-					} else {
+				} else {
 						tempNode.setNextNode(tempNode.getNextNode().getNextNode());
-						size--;
-					}
+				}
+				size--;
 			}	
 		}
 		return retObject;
