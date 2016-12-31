@@ -62,8 +62,30 @@ public class LinkedList implements List {
 	}
 
 	public ReturnObject add(int index, Object item) {
-		ReturnObject retObject = null;
-		return retObject;	
+		if (item == null) {
+			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		} else if (index < 0 || index > size) {
+			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			// create new node with item passed in params
+			Node newNode = new Node(item);
+			retObject = new ReturnObjectImpl(item);
+			// check if list is empty and set as firstNode if so
+			if (isEmpty()){
+				firstNode = newNode;
+				size++;
+			} else {
+				Node tempNode = firstNode;
+				// go to last node in list
+				while (tempNode.getNextNode() != null) {
+					tempNode = tempNode.getNextNode();
+				}
+				// set current last node to point to new node
+				tempNode.setNextNode(newNode);
+				size++;
+			}	
+		}
+		return retObject;
 	}
 
 	public ReturnObject add(Object item) {

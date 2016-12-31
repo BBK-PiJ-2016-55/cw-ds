@@ -2,7 +2,7 @@ public class Node {
 	private Node nextNode;
 	private Object value;
 
-	public Node(Object value, Node nextNode){
+	public Node(Object value){
 		this.nextNode = null;
 		this.value = value; 
 	}
