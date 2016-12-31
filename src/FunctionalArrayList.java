@@ -23,18 +23,14 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	/**
      * Returns the element at the beginning of the list. 
      * 
-     * If the list is empty, an appropriate error is returned. 
+     * If the list is empty, an appropriate error is returned using 
+     * get() from {@see ArrayList}.
      *
      * @return a copy of the element at the beginning of the list or 
      *         an error if the list is empty.
      */
     public ReturnObject head() {
-    	ReturnObject myReturnObject;
-    	if (this.isEmpty()){
-    		retObject = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
-    	} else {
-    		retObject = new ReturnObjectImpl(this.get(0));
-    	}
+    	retObject = super.get(0);
     	return retObject;
     }
 
@@ -46,9 +42,15 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
      * If the list is empty, another empty list is returned. 
      */
     public FunctionalList rest(){
-    	FunctionalList myFunctionalList = new FunctionalArrayList();
-
-    	return myFunctionalList;	
+    	FunctionalList funList = new FunctionalArrayList();
+    	if (super.isEmpty()) {
+    		return funList;
+    	} else {
+    		for (int i = 1; i < (super.size()); i++) {
+    			funList.add(super.get(i).getReturnValue()); 
+    		}
+    		return funList;
+    	}
     }
 }
 
