@@ -16,22 +16,28 @@ public class LinkedList implements List {
 		return size;
 	}
 
-	public ReturnObject get(int index){
-		// start at first node and get nextNode()
-		// set tempNode to nextNode
-		// add one to counter 
-		// get next node adde one to counter... until counter = index
-		// return that node
+	public ReturnObject errorCheck(int index) {
 		if (isEmpty()){
 			retObject = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 		} else if (index < 0 || index >= size) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-		Node tempNode = firstNode;
-		for (int i = 0; i != index; i++) {
-			tempNode = tempNode.getNextNode();
-			}
-			retObject = new ReturnObjectImpl(tempNode.getNodeValue());
+			retObject = new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		}
+		return retObject;
+	}
+
+	public ReturnObject get(int index){
+		// Check for errors
+		retObject = errorCheck(index);
+		// If error-free, go through list to find required index
+		if (!retObject.hasError()) {	
+			Node currentNode = firstNode;
+			for (int i = 0; i != index; i++) {
+				currentNode = currentNode.getNextNode();
+				}
+				// Retrieve nodeValue and use to create new RetObject 
+				retObject = new ReturnObjectImpl(currentNode.getNodeValue());
 		}
 		return retObject;
 	}
@@ -39,7 +45,7 @@ public class LinkedList implements List {
 	public ReturnObject remove(int index){
 		retObject = get(index);
 		if (!retObject.hasError()) {
-			Node tempNode = firstNode;
+			Node currentNode = firstNode;
 			// go through nodes until we reach the one before the one to be removed
 			// set that nextNode to point to the one *after* node for deletion
 			// decrease size
@@ -48,12 +54,12 @@ public class LinkedList implements List {
 				size--;
 			} else {
 				for (int i = 0; i < (index - 1); i++) {
-					tempNode = tempNode.getNextNode();
+					currentNode = currentNode.getNextNode();
 					}
-				if (tempNode.getNextNode().getNextNode() == null){
-						tempNode.setNextNode(null);
+				if (currentNode.getNextNode().getNextNode() == null){
+						currentNode.setNextNode(null);
 				} else {
-						tempNode.setNextNode(tempNode.getNextNode().getNextNode());
+						currentNode.setNextNode(currentNode.getNextNode().getNextNode());
 				}
 				size--;
 			}	
@@ -76,15 +82,15 @@ public class LinkedList implements List {
 				firstNode = newNode;
 			// adding anywhere else in list (except at end - out of bounds)
 			} else {
-				Node tempNode = firstNode;
+				Node currentNode = firstNode;
 				// iterate through list to find + stop at item *before* one given in index
 				for (int i = 0; i < (index - 1); i++) {
-						tempNode = tempNode.getNextNode();
+						currentNode = currentNode.getNextNode();
 					}
 				// set nextNode of newNode to point to that node's current nextNode value
-				newNode.setNextNode(tempNode.getNextNode());
-				// set NextNode of tempNode to point to newNode  
-				tempNode.setNextNode(newNode);
+				newNode.setNextNode(currentNode.getNextNode());
+				// set NextNode of currentNode to point to newNode  
+				currentNode.setNextNode(newNode);
 			}
 		size++;
 		}	
@@ -102,13 +108,13 @@ public class LinkedList implements List {
 				firstNode = newNode;
 				size++;
 			} else {
-				Node tempNode = firstNode;
+				Node currentNode = firstNode;
 				// go to last node in list
-				while (tempNode.getNextNode() != null) {
-					tempNode = tempNode.getNextNode();
+				while (currentNode.getNextNode() != null) {
+					currentNode = currentNode.getNextNode();
 				}
 				// set current last node to point to new node
-				tempNode.setNextNode(newNode);
+				currentNode.setNextNode(newNode);
 				size++;
 			}
 		}
