@@ -45,13 +45,18 @@ public class LinkedList implements List {
 			// decrease size
 			if (index == 0) {
 				firstNode = firstNode.getNextNode();
+				size--;
 			} else {
 				for (int i = 0; i < (index - 1); i++) {
 					tempNode = tempNode.getNextNode();
 					}
-					tempNode.setNextNode(tempNode.getNextNode().getNextNode());
-					size--;
-			}
+					if (tempNode.getNextNode().getNextNode() == null){
+						tempNode.setNextNode(null);
+					} else {
+						tempNode.setNextNode(tempNode.getNextNode().getNextNode());
+						size--;
+					}
+			}	
 		}
 		return retObject;
 	}
