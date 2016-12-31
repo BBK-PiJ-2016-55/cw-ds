@@ -5,10 +5,10 @@
  */
 public class ArrayList implements List {
 
-	private int size = 0;
-	private static int DEFAULT_SIZE = 20; 
-	private Object[] array = new Object[DEFAULT_SIZE];
-	private ReturnObject retObject;
+	protected int size = 0;
+	protected static int DEFAULT_SIZE = 20; 
+	protected Object[] array = new Object[DEFAULT_SIZE];
+	protected ReturnObject retObject;
 
 	/**
 	 * Returns true if the list is empty, false otherwise. 
