@@ -47,7 +47,7 @@ public class LinkedList implements List {
 	}
 
 	public ReturnObject add(Object item) {
-		ReturnObject retObject = null;
-		return retObject;			
+		retObject = add(size, item);
+		return retObject;		
 	}
 }
