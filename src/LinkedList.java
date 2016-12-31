@@ -64,13 +64,40 @@ public class LinkedList implements List {
 	public ReturnObject add(int index, Object item) {
 		if (item == null) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
-		} else if (index < 0 || index > size) {
+		} else if (index < 0 || index >= size) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			// create new node with item passed in params
 			Node newNode = new Node(item);
 			retObject = new ReturnObjectImpl(item);
-			// check if list is empty and set as firstNode if so
+			// adding to start of list
+			if (index == 0) {
+				newNode.setNextNode(firstNode);
+				firstNode = newNode;
+			// adding anywhere else in list (except at end - out of bounds)
+			} else {
+				Node tempNode = firstNode;
+				// iterate through list to find + stop at item *before* one given in index
+				for (int i = 0; i < (index - 1); i++) {
+						tempNode = tempNode.getNextNode();
+					}
+				// set nextNode of newNode to point to that node's current nextNode value
+				newNode.setNextNode(tempNode.getNextNode());
+				// set NextNode of tempNode to point to newNode  
+				tempNode.setNextNode(newNode);
+			}
+		size++;
+		}	
+		return retObject;
+	}
+
+	public ReturnObject add(Object item) {
+		if (item == null) {
+			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+		Node newNode = new Node(item);
+		retObject = new ReturnObjectImpl(item);
+			// checks if list is empty and sets firstnode to new if so
 			if (isEmpty()){
 				firstNode = newNode;
 				size++;
@@ -83,13 +110,8 @@ public class LinkedList implements List {
 				// set current last node to point to new node
 				tempNode.setNextNode(newNode);
 				size++;
-			}	
+			}
 		}
-		return retObject;
-	}
-
-	public ReturnObject add(Object item) {
-		retObject = add(size, item);
 		return retObject;		
 	}
 }
