@@ -64,8 +64,8 @@ public class LinkedList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObject remove(int index){
-		// Check for errors
-		retObject = errorCheck(index);
+		// Check for errors via get()
+		retObject = get(index);
 		if (!retObject.hasError()) {
 			// If index is first item in list, redefine firstNode
 			if (index == 0) {
