@@ -1,7 +1,7 @@
 /**
  * An implementation of {@see SampleableList}
  * 
- * @author PiJ
+ * @author svince04
  */
 public class SampleableListImpl extends LinkedList implements SampleableList {
 	/**
@@ -15,8 +15,9 @@ public class SampleableListImpl extends LinkedList implements SampleableList {
 		if (super.isEmpty()) {
     		return sampleableList;
     	} else {
-			// Assign each element to new list, starting after head
+			// Goes through each element in target list
     		for (int i = 0; i < (super.size()); i++) {
+    			// Assigns only even indices to new list
     			if ((i % 2) == 0) {
     			sampleableList.add(super.get(i).getReturnValue()); 
     			}
