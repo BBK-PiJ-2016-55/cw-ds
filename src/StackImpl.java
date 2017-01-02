@@ -5,8 +5,7 @@ public class StackImpl extends AbstractStack {
 	}
 
 	public boolean isEmpty() {
-		boolean boo = (internalList.isEmpty());
-		return boo;
+		return (internalList.isEmpty());
 	}
 
 	public int size() {
