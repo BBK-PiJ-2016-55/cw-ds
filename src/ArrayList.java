@@ -6,7 +6,7 @@
 public class ArrayList implements List {
 
 	protected int size = 0;
-	protected static int DEFAULT_SIZE = 20; 
+	protected static final int DEFAULT_SIZE = 20; 
 	protected Object[] array = new Object[DEFAULT_SIZE];
 	protected ReturnObject retObject;
 
