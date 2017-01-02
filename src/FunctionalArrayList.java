@@ -43,7 +43,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
      */
     public FunctionalList rest(){
     	FunctionalList funList = new FunctionalArrayList();
-    	if (super.isEmpty()) {
+    	if (super.isEmpty() || (super.size() == 1)) {
     		return funList;
     	} else {
     		for (int i = 1; i < (super.size()); i++) {
