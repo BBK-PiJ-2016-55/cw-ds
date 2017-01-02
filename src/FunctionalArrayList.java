@@ -1,17 +1,7 @@
 /**
- * A functional list is a list with a few additional methods that are
- * common in functional languages (such as Lisp, Clojure, or Haskell)
- * to work with lists in a recursive way. 
- *
- * Not all operations on a recursive list will always be
- * successful. For example, a programmer may try to extract the head
- * from an empty list. Since we have not covered exceptions yet, we
- * need another mechanism to report errors. In order to do that,
- * methods of this list will return a {@see ReturnObject} that will
- * contain either an object or an error value of the right kind (as
- * defined in {@see ErrorMessage}).
+ *An implementation of {@see FunctionalList} using {@see ArrayList}.
  * 
- * @author PiJ
+ * @author svince04
  */
 
 public class FunctionalArrayList extends ArrayList implements FunctionalList {

@@ -1,3 +1,9 @@
+/**
+ *An implementation of {@see FunctionalList} using {@see LinkedList}.
+ * 
+ * @author svince04
+ */
+
 public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 
 	public FunctionalLinkedList() {
