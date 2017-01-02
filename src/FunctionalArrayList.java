@@ -30,7 +30,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
      *         an error if the list is empty.
      */
     public ReturnObject head() {
-    	retObject = super.get(0);
+    	super.get(0);
     	return retObject;
     }
 

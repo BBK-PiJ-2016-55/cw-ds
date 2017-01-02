@@ -7,17 +7,15 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	/**
      * Returns the element at the beginning of the list. 
      * 
-     * If the list is empty, an appropriate error is returned. 
+     * If the list is empty, an appropriate error is returned using 
+     * get() from {@see LinkedList}.
      *
      * @return a copy of the element at the beginning of the list or 
      *         an error if the list is empty.
      */
 	public ReturnObject head() {
-		// test to check if retObject needs to be assigned back - shouldn't be
-		// so 'retObject =' could be removed...
-		retObject = super.get(0);
+		super.get(0);
 		return retObject;
-
 	}
 
     /**
