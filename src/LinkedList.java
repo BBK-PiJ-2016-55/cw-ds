@@ -4,9 +4,9 @@
  * @author svince04
  */
 public class LinkedList implements List {
-	private int size = 0;
-	private Node firstNode = null;
-	private ReturnObject retObject;
+	protected int size = 0;
+	protected Node firstNode = null;
+	protected ReturnObject retObject;
 
 	/**
 	 * Returns true if the list is empty, false otherwise. 
