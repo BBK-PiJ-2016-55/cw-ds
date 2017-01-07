@@ -60,12 +60,11 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 * @param object the object to remove
 	 */
 	public void remove(Object object) {
-		for (int i = 0; i < internalList.size(); i++) {
-			if (internalList.get(i).equals(object)) {
-				internalList.remove(i);
-				System.out.println("Removing object at index " + i);
+		for (int i = 0; i < size(); i++) {
+			if (internalList.get(i).getReturnValue().equals(object)) {
+					internalList.remove(i);
+				}
 			}
-		}
 
 	}
 
@@ -86,7 +85,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ReturnObject top() {
-		return (internalList.get(1));
+		return (internalList.get(0));
 	}
 
 	@Override
