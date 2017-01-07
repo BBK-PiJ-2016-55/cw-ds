@@ -33,14 +33,21 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 */
 	public ImprovedStack reverse() {
 		List revList = new ArrayList();
-		// Does this need to be a var? Check during testing
-		int backCount = internalList.size();
-		// Iterate backwards through internalList + assign nodes to revList
-		for (int i = 0; i < internalList.size(); i++) {
-			revList.add(internalList.get(backCount - i)); 
+		// Check this doesn't throw an error during testing if empty
+		// Presumably is passing null List?
+		if (internalList.isEmpty()) {
+			ImprovedStack revStack = new ImprovedStackImpl(revList);
+			return revStack;
+		} else {
+			// Does this need to be a var? Check during testing
+			int backCount = internalList.size();
+			// Iterate backwards through internalList + assign nodes to revList
+			for (int i = 0; i < internalList.size(); i++) {
+				revList.add(internalList.get(backCount - i)); 
+			}
+			ImprovedStack revStack = new ImprovedStackImpl(revList);
+			return revStack;
 		}
-		ImprovedStack myStack = new ImprovedStackImpl(revList);
-		return myStack;
 	}
 
 	/**
@@ -53,7 +60,13 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 * @param object the object to remove
 	 */
 	public void remove(Object object) {
-		// do something here
+		for (int i = 0; i < internalList.size(); i++) {
+			if (internalList.get(i).equals(object)) {
+				internalList.remove(i);
+				System.out.println("Removing object at index " + i);
+			}
+		}
+
 	}
 
 	@Override
