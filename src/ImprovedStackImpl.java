@@ -32,8 +32,14 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 * @return a copy of this stack with the items reversed. 
 	 */
 	public ImprovedStack reverse() {
-		// do something to take internal list, reverse and assigns to new stack
-		ImprovedStack myStack = null;
+		List revList = new ArrayList();
+		// Does this need to be a var? Check during testing
+		int backCount = internalList.size();
+		// Iterate backwards through internalList + assign nodes to revList
+		for (int i = 0; i < internalList.size(); i++) {
+			revList.add(internalList.get(backCount - i)); 
+		}
+		ImprovedStack myStack = new ImprovedStackImpl(revList);
 		return myStack;
 	}
 
