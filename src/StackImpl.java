@@ -29,10 +29,7 @@ public class StackImpl extends AbstractStack {
 	}
 
 	public ReturnObject pop() {
-		// Get value before removing
-		ReturnObject retObject = top();
-		internalList.remove(0);
-		return retObject;
+		return (internalList.remove(0));
 	}
 
 }

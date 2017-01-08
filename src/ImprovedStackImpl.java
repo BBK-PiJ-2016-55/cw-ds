@@ -57,9 +57,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ReturnObject pop() {
-		ReturnObject retObject = top();
-		internalList.remove(0);
-		return retObject;
+		return (internalList.remove(0));
 	}
 
 }

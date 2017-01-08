@@ -40,7 +40,6 @@ public class ArrayList implements List {
 			// Sets last object to null - last object now held at previous index
 			array[size] = null;
 			size--;
-			retObject = new ReturnObjectImpl(null);
 		}
 		return retObject; 
 	}
