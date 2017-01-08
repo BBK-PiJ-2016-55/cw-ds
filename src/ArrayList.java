@@ -19,6 +19,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject get(int index) {
+		// Checks for errors
 		if (isEmpty()) {
 			retObject = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 		} else if (index < 0 || index > size) {
@@ -26,6 +27,7 @@ public class ArrayList implements List {
 		} else {
 			retObject = new ReturnObjectImpl(array[index]);
 		}
+	// Returns retObject with errors or object
 	return retObject;
 	}
 
@@ -35,6 +37,7 @@ public class ArrayList implements List {
 			for (int i = index; i < size; i++) {
 				array[i] = array[i + 1];
 			}
+			// Sets last object to null - last object now held at previous index
 			array[size] = null;
 			size--;
 		}
@@ -42,17 +45,22 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(int index, Object item) {
+		// Checks for errors
 		if (item == null) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else if (index < 0 || index > size) {
 			retObject = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {	
+			// Makes array larger if already at full capacity
 			if (size >= array.length){
 				embiggen();
 			}
+			// Checks if index is last in current list
 			if (size == index){
 				array[size] = item;
 			} else {
+				// Goes backwards through list, moving all elements up one place
+				// Until correct index point is found
 				for (int i = (size - 1); i >= index; i--) {
 					array[i + 1] = array[i];
 				}
@@ -65,6 +73,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(Object item) {
+		// Uses the other get() to add item at end of list
 		retObject = add(size, item);
 		return retObject;
 	}
