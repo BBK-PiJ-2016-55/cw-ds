@@ -78,6 +78,7 @@ public class ArrayList implements List {
 			}
 			array[size] = item;
 			size++;
+			// Sets retObject to null to indicate successful add on return
 			retObject = new ReturnObjectImpl(null);
 		}
 		return retObject;

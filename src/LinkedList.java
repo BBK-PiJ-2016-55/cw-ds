@@ -67,6 +67,7 @@ public class LinkedList implements List {
 			return retObject;
 		} else {
 			Node newNode = new Node(item);
+			// Sets retObject to null to indicate successful add on return
 			retObject = new ReturnObjectImpl(null);
 			// If index is first item in list, redefine firstNode
 			if (index == 0) {
@@ -91,6 +92,7 @@ public class LinkedList implements List {
 			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 		Node newNode = new Node(item);
+		// Sets retObject to null to indicate successful add on return
 		retObject = new ReturnObjectImpl(null);
 			// If list is empty, set firstNode
 			if (isEmpty()){
