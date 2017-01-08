@@ -34,6 +34,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 	public ImprovedStack reverse() {
 		List revList = new ArrayList();
 		// Check this doesn't throw an error during testing if empty
+		// Might not need - test w an empty array
 		// Presumably is passing null List?
 		if (internalList.isEmpty()) {
 			ImprovedStack revStack = new ImprovedStackImpl(revList);
@@ -42,7 +43,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 			// Does this need to be a var? Check during testing
 			int backCount = internalList.size();
 			// Iterate backwards through internalList + assign nodes to revList
-			for (int i = 0; i < internalList.size(); i++) {
+			for (int i = 0; i <= internalList.size(); i++) {
 				revList.add(internalList.get(backCount - i).getReturnValue()); 
 			}
 			ImprovedStack revStack = new ImprovedStackImpl(revList);
