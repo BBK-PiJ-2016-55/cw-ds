@@ -37,6 +37,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 			for (int i = 0; i <= internalList.size(); i++) {
 				revList.add(internalList.get(internalList.size() - i).getReturnValue()); 
 			}
+			// Create new ImprovedStackImpl using reversed list
 			ImprovedStack revStack = new ImprovedStackImpl(revList);
 			return revStack;
 	}
