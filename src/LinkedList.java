@@ -35,7 +35,6 @@ public class LinkedList implements List {
 		// Check for errors via get()
 		retObject = get(index);
 		if (!retObject.hasError()) {
-			//retObject = new ReturnObjectImpl(null);
 			// If index is first item in list, redefine firstNode
 			if (index == 0) {
 				firstNode = firstNode.getNextNode();
