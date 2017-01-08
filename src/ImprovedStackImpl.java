@@ -43,7 +43,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 			int backCount = internalList.size();
 			// Iterate backwards through internalList + assign nodes to revList
 			for (int i = 0; i < internalList.size(); i++) {
-				revList.add(internalList.get(backCount - i)); 
+				revList.add(internalList.get(backCount - i).getReturnValue()); 
 			}
 			ImprovedStack revStack = new ImprovedStackImpl(revList);
 			return revStack;
