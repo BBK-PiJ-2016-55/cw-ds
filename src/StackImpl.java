@@ -20,7 +20,13 @@ public class StackImpl extends AbstractStack {
 	}
 
 	public void push(Object item) {
-		internalList.add(0, item);
+		// Uses item-only add method if list empty
+		if (internalList.size() == 0) {
+			internalList.add(item);
+		} else {
+			// Uses item + index add method if non-empty
+			internalList.add(0, item);
+		}
 	}
 	
 	public ReturnObject top() {

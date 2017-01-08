@@ -47,7 +47,13 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public void push(Object item) {
-		internalList.add(0, item);
+		// Uses item-only add method if list empty
+		if (internalList.size() == 0) {
+			internalList.add(item);
+		} else {
+			// Uses item + index add method if non-empty
+			internalList.add(0, item);
+		}
 	}
 
 	@Override
