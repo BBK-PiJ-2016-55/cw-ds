@@ -35,6 +35,7 @@ public class LinkedList implements List {
 		// Check for errors via get()
 		retObject = get(index);
 		if (!retObject.hasError()) {
+			retObject = new ReturnObjectImpl(null);
 			// If index is first item in list, redefine firstNode
 			if (index == 0) {
 				firstNode = firstNode.getNextNode();
@@ -67,7 +68,7 @@ public class LinkedList implements List {
 			return retObject;
 		} else {
 			Node newNode = new Node(item);
-			retObject = new ReturnObjectImpl(item);
+			retObject = new ReturnObjectImpl(null);
 			// If index is first item in list, redefine firstNode
 			if (index == 0) {
 				newNode.setNextNode(firstNode);
@@ -91,7 +92,7 @@ public class LinkedList implements List {
 			retObject = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 		Node newNode = new Node(item);
-		retObject = new ReturnObjectImpl(item);
+		retObject = new ReturnObjectImpl(null);
 			// If list is empty, set firstNode
 			if (isEmpty()){
 				firstNode = newNode;

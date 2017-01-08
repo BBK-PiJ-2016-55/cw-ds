@@ -28,6 +28,8 @@ public class ImprovedStackImpl implements ImprovedStack {
 		for (int i = 0; i < size(); i++) {
 			if (internalList.get(i).getReturnValue().equals(object)) {
 					internalList.remove(i);
+					// Keep index at same point in case of duplicate objects
+					i--;
 				}
 			}
 
@@ -55,7 +57,9 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ReturnObject pop() {
-		return (internalList.remove(0));
+		ReturnObject retObject = top();
+		internalList.remove(0);
+		return retObject;
 	}
 
 }
