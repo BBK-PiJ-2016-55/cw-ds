@@ -1,4 +1,38 @@
 Please see the general comments, some of which are applicable to your submission.
 The output of the various checking tools should be paid attention to although checkstyle is a little "aggressive".
 
-...
+See general comments re:
+
+* javadoc and comments
+* unnecessary temporary variables
+
+ReturnObject retObject = internalList.get(0);
+		return retObject;
+
+* Magic numbers vs constants
+
+for (int i = 0; i < (super.size()); i++) {
+    			// Assigns only even indices to new list
+    			if ((i % 2) == 0) {
+    			sampleableList.add(super.get(i).getReturnValue());
+    			}
+    		}
+
+* returning true/false when the expression yields a boolean
+
+public boolean hasError(){
+		if (errorMessage == ErrorMessage.NO_ERROR || errorMessage == null){
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+* Internal classes, e.g., Node, should be "package" access, or, even better, "private" access.
+* Classes that have constructors that do exactly the same thing as the default version
+
+public FunctionalLinkedList() {
+		super();
+	}
+
+* 
